@@ -63,7 +63,7 @@
 
 - **The C programming language** was developed in the 1970s. It's used for programming operating systems, games, smart devices, and even compilers for other languages.
 
-- **A library** is the grouping of variables and functions that someone else has written and verified.
+- **A library** is the grouping of variables and functions that someone else has written and verified. 
 
 ---
 
