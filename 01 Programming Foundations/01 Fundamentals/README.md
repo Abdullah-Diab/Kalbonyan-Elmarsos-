@@ -67,7 +67,7 @@
 
 ---
 
-**Course Link:**[Programming Foundations: Fundamentals](https://www.linkedin.com/learning/programming-foundations-fundamentals-3/the-fundamentals-of-programming)
+**Course Link:** [Programming Foundations: Fundamentals](https://www.linkedin.com/learning/programming-foundations-fundamentals-3/the-fundamentals-of-programming)
 
 **Certificate:**
 
