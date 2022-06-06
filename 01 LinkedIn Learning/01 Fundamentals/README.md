@@ -59,11 +59,12 @@
 - **Equality operator:** It's represented by a double equal sign, and it's used to evaluate the equality of the operands.
 
 - **A function** is a block of code packaged together with a name.
+
 - **Java, Python, and C++** have inherited ideas from C.
 
 - **The C programming language** was developed in the 1970s. It's used for programming operating systems, games, smart devices, and even compilers for other languages.
 
-- **A library** is the grouping of variables and functions that someone else has written and verified. 
+- **A library** is the grouping of variables and functions that someone else has written and verified.
 
 ---
 

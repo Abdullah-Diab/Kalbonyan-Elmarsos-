@@ -27,6 +27,7 @@
 - **Iterating through collections**
 
   - `for` specific variable names that we can use in each iteration of the loop to reference the current values.
+
   - `in` indicating what follows is the set of values we want to iterate through.
 
   ```python
@@ -37,7 +38,8 @@
       print(spice)
   ```
 
-- `while` used to create a loop in python.
+  - `while` used to create a loop in python.
+
   ```python
   # print count to 100 by 5
   i = 5
@@ -46,6 +48,7 @@
       1 += 5
       print('List completed')
   ```
+
 - **Module** python file that contains code, like variables or functions.
 
 - **Library or package** using multiple modules together so they are distributed and used in a group.
