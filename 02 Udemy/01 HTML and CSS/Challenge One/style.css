@@ -1,0 +1,165 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+body {
+  color: #444;
+  font-family: sans-serif;
+  border-top: 5px solid #1098ad;
+  border-bottom: 5px solid #1098ad;
+  position: relative;
+}
+
+.container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.main-header {
+  background-color: #f7f7f7;
+  padding: 20px 40px;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+a {
+  color: #1098ad;
+}
+
+nav {
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+nav a {
+  margin: 0 10px;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+nav a:last-child {
+  margin-right: 0;
+}
+
+a:hover {
+  color: rgb(105, 85, 78);
+}
+
+article {
+  margin-bottom: 60px;
+}
+
+span {
+  font-size: 16px;
+}
+
+aside {
+  background-color: #f7f7f7;
+  border-top: 4px solid #1098ad;
+  border-bottom: 4px solid #1098ad;
+  padding: 50px 0;
+  width: 800px;
+  margin-bottom: 70px;
+}
+
+aside li {
+  list-style: none;
+}
+
+h1,
+h2,
+h3 {
+  color: #1098ad;
+}
+
+h1 {
+  font-size: 26px;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+h2 {
+  font-size: 35px;
+  margin-bottom: 30px;
+}
+
+h3 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+h4 {
+  font-size: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 20px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.outher {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+ul,
+ol {
+  margin-left: 50px;
+  margin-bottom: 20px;
+}
+
+li {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.bold {
+  font-size: bold;
+  color: #011417;
+  font-size: 22px;
+}
+
+.footer {
+  background-color: #f7f7f7;
+  padding: 20px 40px;
+  text-align: center;
+  color: #011417;
+}
+
+.blog {
+  background-color: black;
+  height: 100vh;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-page h1 {
+  font-style: normal;
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+.blog-page a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: antiquewhite;
+  border: 1px solid #1098ad;
+  padding: 10px 15px;
+  border-radius: 999px;
+  transition: 0.4s;
+}
+
+.blog-page a:hover {
+  color: #1098ad;
+}
