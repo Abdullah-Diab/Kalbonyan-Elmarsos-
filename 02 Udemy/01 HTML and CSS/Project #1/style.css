@@ -111,7 +111,7 @@ h4 {
   font-size: 20px;
   text-transform: uppercase;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 p {
@@ -153,6 +153,12 @@ li {
   justify-content: center;
 }
 
+.blog-page {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
 .blog-page h1 {
   font-style: normal;
   margin-bottom: 20px;
@@ -177,4 +183,26 @@ li {
 .outher {
   font-size: 16px;
   font-weight: bold;
+}
+
+.related-post {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.related-post p {
+  margin-bottom: 0;
+  font-weight: normal;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.related-post a:link {
+  font-weight: bold;
+}
+
+.related-post:last-child {
+  margin-bottom: 0;
 }
