@@ -15,10 +15,10 @@
 
 ---
 
-**Course Link:** [Learn HTML and CSS : Jonas.](https://www.udemy.com/course/design-and-develop-a-killer-website-with-html5-and-css3/)
+**Course Link:** [Learn HTML and CSS | Jonas.](https://www.udemy.com/course/design-and-develop-a-killer-website-with-html5-and-css3/)
 
 **Certificate:**
 
 <p align="center">
-  <img  src="#" width="700">
+  <img  src="https://imagizer.imageshack.com/img922/2379/nQfJM8.jpg" width="700">
 </p>
