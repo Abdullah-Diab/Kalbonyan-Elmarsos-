@@ -8,7 +8,7 @@
   - Web browsers understand HTML and render HTML code as websites.
 
   ```html
-  <h1>**H**yper**T**ext **M**arkup **L**anguage.</h1>
+  <h1>HyperText Markup Language.</h1>
   ```
 
 - **WHAT IS CSS?**
@@ -26,7 +26,7 @@
 
 ---
 
-**Course Link:** [Learn HTML and CSS](https://www.udemy.com/course/design-and-develop-a-killer-website-with-html5-and-css3/)
+**Course Link:** [Learn HTML and CSS: Jonas](https://www.udemy.com/course/design-and-develop-a-killer-website-with-html5-and-css3/)
 
 **Certificate:**
 
