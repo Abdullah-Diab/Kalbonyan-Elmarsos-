@@ -12,9 +12,19 @@
 
 ### Course Notes.
 
-- **What is Git?** - Git is a version control software. - Git is a way of tracking your files progress over time. - Git is the most popular source control software in the world. - Git has lots of integration with other programs, giving it lots of value and demand.
+- **What is Git?**
 
-- **What is GitHub?** - GitHub is an application allowing you to store remote repositories. - GitHub is used primarily to allow other people to add to the project (ex. Open source projects) - GitHub allows more people than just yourself to see and interact with the repository. - You can interact with your GitHub repository through the push/pull system on your local machine.
+      - Git is a version control software.
+      - Git is a way of tracking your files progress over time.
+      - Git is the most popular source control software in the world.
+      - Git has lots of integration with other programs, giving it lots of value and demand.
+
+- **What is GitHub?**
+
+       - GitHub is an application allowing you to store remote repositories.
+       - GitHub is used primarily to allow other people to add to the project (ex. Open source projects)
+       - GitHub allows more people than just yourself to see and interact with the repository.
+       - You can interact with your GitHub repository through the push/pull system on your local machine.
 
 ---
 
