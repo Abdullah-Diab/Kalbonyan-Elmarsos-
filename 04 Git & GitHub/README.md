@@ -26,6 +26,10 @@
   - GitHub allows more people than just yourself to see and interact with the repository.
   - You can interact with your GitHub repository through the push/pull system on your local machine.
 
+- **A GUI**, or Graphical User Interface is any software that can allow the user to perform tasks through a graphical interface.
+
+- **SourceTree** is a Git GUI allowing you to interact with your repositories through a graphical interface.
+
 #### A list of Git commands:
 
 | Command                                                                           | Description                                       |
