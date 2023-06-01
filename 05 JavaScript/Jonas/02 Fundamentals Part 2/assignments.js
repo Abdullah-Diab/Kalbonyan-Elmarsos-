@@ -118,4 +118,69 @@ if (!neighbours.includes("Germany")) {
   console.log(`Maybe not a country in Africa :)`);
 }
 
+// LECTURE: Introduction to Objects
+console.log("Introduction to Objects: 😀");
+
+const myCountry = {
+  country: "Egypt",
+  capital: "Cairo",
+  language: "Arabic",
+  population: 107.48,
+  neighbours: ["Libya", "Palestinian", "Sudan"],
+  // neighbours: [],
+
+  describe: function () {
+    console.log(
+      `${this.country} has ${this["population"]} million finnish-speaking people, ${this.neighbours.length} neighbouring countries and a capital called ${this.capital}.`
+    );
+  },
+
+  checkIsland: function () {
+    // console.log((this.isIsland = this.neighbours.length === 0 ? true : false));
+    this.isIsland = !Boolean(this.neighbours.length); // Boolean(true)
+  },
+};
+
+const jonas = {
+  firstName: "Jonas",
+  lastName: "Schmedtmann",
+  age: 2037 - 1991,
+  job: "teacher",
+  friends: ["Michael", "Peter", "Steven"],
+  hasDriversLicense: true,
+
+  getSummary: function () {
+    return `${this.firstName} is a ${this.age}-year old ${
+      this.job
+    }, and he has ${this.hasDriversLicense ? "a" : "no"} driver's license`;
+  },
+};
+
+jonas.location = "Portugal";
+jonas["twitter"] = "@jounsschmedtman";
+
+// Challenge : "Jonas has 3 friends, and his best friend is called Michael"
+console.log(
+  `${jonas.firstName} has ${jonas["friends"].length} friends, and his best friend is called ${jonas.friends[0]} :)`
+);
+
+// Challenge : "Jonas is a 46-year old teacher, and he has a driver's license"
+console.log(jonas.getSummary());
+
+// LECTURE: Dot vs. Bracket Notation
+console.log("Dot vs. Bracket Notation: 😀");
+
+console.log(
+  `${myCountry.country} has ${myCountry["population"]} million finnish-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}.`
+);
+
+myCountry.population = myCountry.population + 2;
+myCountry.population = myCountry.population - 3;
+
+// LECTURE: Object Methods
+console.log("Object Methods: 😀");
+myCountry.describe();
+myCountry.checkIsland();
+console.log(myCountry);
+
 console.groupEnd("");
