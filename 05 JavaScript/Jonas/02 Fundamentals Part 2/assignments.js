@@ -183,4 +183,80 @@ myCountry.describe();
 myCountry.checkIsland();
 console.log(myCountry);
 
+// LECTURE: Iteration: The for Loop
+console.log("Iteration: The for Loop: 😀");
+for (let vote = 1; vote <= 3; vote++) {
+  console.log(`Voter number ${vote} is currently voting.`);
+}
+
+// Exercise Of Loops.
+// LECTURE: Looping Arrays, Breaking and Continuing
+console.log("Looping Arrays, Breaking and Continuing: 😀");
+
+const abdullah = [
+  "Abdullah",
+  "Diab",
+  2023 - 2001,
+  "student",
+  ["Ahmed", "Ali", "Mohammed"],
+  false,
+];
+
+const types = [];
+
+for (let i = 0; i < abdullah.length; i++) {
+  if (typeof abdullah[i] === "object") continue;
+  // if (typeof abdullah[i] === "number") break;
+
+  console.log(abdullah[i]);
+
+  types[i] = typeof abdullah[i];
+  // types.push(typeof abdullah[i]);
+}
+
+console.log(types);
+
+for (let i = abdullah.length - 1; i >= 0; i--) {
+  console.log(i, abdullah[i]);
+}
+
+for (let exercise = 1; exercise <= 3; exercise++) {
+  console.log(`Starting Exercise # ${exercise}`);
+  for (let times = 1; times <= 5; times++) {
+    console.log(`Lifting weight reptition ${times} 🏋🏾`);
+  }
+}
+
+// LECTURE: Looping Backwards and Loops in Loops
+console.log("Looping Loops in Loops: 😀");
+
+const listOfNeighbours = [
+  ["Canada", "Mexico"],
+  ["Spain"],
+  ["Norway", "Sweden", "Russia"],
+];
+
+// console.log(listOfNeighbours[0][1]); // Mexeico
+
+for (let i = 0; i < listOfNeighbours.length; i++) {
+  for (let y = 0; y < listOfNeighbours[i].length; y++) {
+    console.log(`Neighbour: ${listOfNeighbours[i][y]}`);
+  }
+}
+
+// for (let i = 0; i < listOfNeighbours.length; i++)
+//   for (let y = 0; y < listOfNeighbours[i].length; y++)
+//     console.log(`Neighbour: ${listOfNeighbours[i][y]}`);
+
+// LECTURE: The while Loop
+console.log("The while Loop: 😀");
+
+let dice = Math.trunc(Math.random() * 6) + 1;
+
+while (dice !== 6) {
+  console.log(`You rolled a ${dice}`);
+  dice = Math.trunc(Math.random() * 6) + 1;
+  if (dice === 6) console.log("Loop is about to end ...");
+}
+
 console.groupEnd("");
