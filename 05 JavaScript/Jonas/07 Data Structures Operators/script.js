@@ -256,3 +256,81 @@ console.log(entries);
 for (const [key, { open, close }] of entries) {
   console.log(`On ${key}, We open at ${open} and close at ${close}.`);
 }
+
+// --- SETS ---
+const orderSets = new Set(["Pizza", "Pasta", "Pizza", "Risotto"]);
+console.log(orderSets);
+console.log(orderSets.size);
+console.log(orderSets.has("Pizza"));
+orderSets.add("Bread");
+orderSets.delete("Pizza");
+orderSets.clear();
+console.log(orderSets);
+
+const nameSet = new Set("DIAB");
+for (let cher of nameSet) console.log(cher);
+
+// Real Example
+const staff = ["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+
+// --- MAPS ---
+const rest = new Map();
+rest.set("name", "Classico Italiano");
+rest.set(1, "Firenze, italy");
+rest.set(2, "Lisbon, Portugal");
+rest.set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"]);
+rest
+  .set("open", 11)
+  .set("close", 23)
+  .set(true, "We are open :D")
+  .set(false, "We are closed :(");
+
+console.log(rest);
+console.log(rest.get("name"));
+console.log(rest.get(2));
+console.log(rest.get(false));
+
+// Real Example
+const time = 21;
+const check = rest.get(time > rest.get("open") && time < rest.get("close"));
+console.log(check); // OUTPUT: We are open :D
+
+console.log(rest.has("categories"));
+rest.delete(1);
+rest.clear();
+console.log(rest.size);
+
+const question = new Map([
+  ["question", "What is The best programming language in the World?"],
+  [1, "C++"],
+  [2, "Java"],
+  [3, "JavaScript"],
+  ["correct", 3],
+  [true, "Correct 🎉"],
+  [false, "Try again!"],
+]);
+console.log(question);
+
+// Quiz app
+console.log(question.get("question"));
+for (const [key, value] of question) {
+  if (typeof key === "number") console.log(`Answer ${key}: ${value}`);
+}
+// const answer = Number(prompt("Your answer"));
+const answer = 3;
+const checkAnswer = question.get(question.get("correct") === answer);
+console.log(`${answer} ---> ${checkAnswer}`);
+
+console.log();
+
+// Convert Object to Map
+console.log(Object.entries(restaurant.openingHours));
+const hoursMap = new Map(Object.entries(restaurant.openingHours));
+console.log(hoursMap);
+
+// Convert Map to Array
+console.log([...question]);
+console.log([...question.keys()]);
+console.log([...question.values()]);
