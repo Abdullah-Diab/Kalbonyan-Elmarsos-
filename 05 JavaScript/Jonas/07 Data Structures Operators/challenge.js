@@ -90,6 +90,7 @@ printGoals("Lewandowski", "Gnarby", "Lewandowski");
 team1 < team2 && console.log("Team 1 is more likely to win.");
 team1 > team2 && console.log("Team 2 is more likely to win.");
 console.groupEnd();
+
 // Coding Challenge #2
 console.group("Coding Challenge #2");
 
@@ -134,4 +135,109 @@ for (const player of game.scored) {
 }
 console.log(scorers);
 
+console.groupEnd();
+
+// Coding Challenge #3
+console.group("Coding Challenge #3");
+// Let's continue with our football betting app! This time, we have a map called 'gameEvents' (see below) with a log of the events that happened during the game.
+// The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
+
+// Your tasks:
+// 1. Create an array 'events' of the different game events that happened (no duplicates).
+// 2. After the game has finished, is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+// 3. Compute and log the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes).
+// 4. Loop over 'gameEvents' and log each element to the console, marking whether it's in the first half or second half (after 45 min) of the game,
+//    like this: [FIRST HALF] 17: ⚽ GOAL.
+
+const gameEvents = new Map([
+  [17, "⚽ GOAL"],
+  [36, "🔁 Substitution"],
+  [47, "⚽ GOAL"],
+  [61, "🔁 Substitution"],
+  [64, "🟨 Yellow card"],
+  [69, "🟥 Red card"],
+  [70, "🔁 Substitution"],
+  [72, "🔁 Substitution"],
+  [76, "⚽ GOAL"],
+  [80, "⚽ GOAL"],
+  [92, "🟨 Yellow card"],
+]);
+
+// 1.
+const events = [...new Set(gameEvents.values())];
+console.log(events);
+
+// 2.
+gameEvents.delete(64);
+console.log(gameEvents);
+
+// 3.
+const gameTime = [...gameEvents.keys()].pop(); // To get the last element in Map
+console.log(
+  `An event happened, on average, every ${
+    gameTime / gameEvents.size
+  } minutes :)`
+);
+
+// 4.
+for (const [key, value] of gameEvents) {
+  const timeCheck = key <= 45 ? `[FIRST  HALF]` : `[SECOND HALF]`;
+  console.log(`${timeCheck} ${key}: ${value}.`);
+}
+console.groupEnd();
+
+// Coding Challenge #4
+console.group("Coding Challenge #4");
+// Write a program that receives a list of variable names written in underscore_case and convert them to camelCase.
+
+// Input VS. Output: ✅
+// underscore_case   ------> underscoreCase
+//  first_name       ------> firstName
+// Some_Variable     ------> someVariable
+//   calculate_AGE   ------> calculateAge
+// delayed_departure ------> delayedDeparture
+
+const convert = function (str) {
+  const string = str.toLowerCase().trim();
+  const [first, second] = string.split("_");
+  // const camelCase = `${first}${second[0].toUpperCase()}${second.slice(1)}`;
+  const camelCase = `${first}${second.replace(
+    second[0],
+    second[0].toUpperCase()
+  )}`;
+  console.log(`${camelCase.padEnd(20)} ✅`);
+};
+
+convert("underscore_case");
+convert(" first_name");
+convert("Some_Variable ");
+convert("  calculate_AGE");
+convert("delayed_departure");
+
+console.groupEnd();
+
+// String Methods Practice
+console.group("String Methods Practice");
+
+const flights =
+  "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
+
+// 🔴 Delayed Departure from FAO to TXL (11h25)
+//              Arrival from BRU to FAO (11h45)
+//   🔴 Delayed Arrival from HEL to FAO (12h05)
+//            Departure from FAO to LIS (12h30)
+
+const getCode = (str) => str.slice(0, 3).toUpperCase();
+
+for (const flight of flights.split("+")) {
+  const [type, from, to, time] = flight.split(";");
+  const output = `${type.startsWith("_Delayed") ? "🔴" : ""}${type.replaceAll(
+    "_",
+    " "
+  )} from ${getCode(from)} to ${getCode(to)} (${time.replace(
+    ":",
+    "h"
+  )})`.padStart(44);
+  console.log(output);
+}
 console.groupEnd();
