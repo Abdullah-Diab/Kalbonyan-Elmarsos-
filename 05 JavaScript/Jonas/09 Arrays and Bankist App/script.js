@@ -78,6 +78,24 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+const calcDisplayBalance = function (move) {
+  const balance = move.reduce((acc, cur) => acc + cur, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
+
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.userName = acc.owner
+      .toLowerCase()
+      .split(" ")
+      .map((name) => name[0])
+      .join("");
+  });
+};
+createUsernames(accounts);
+console.log(accounts);
+
 // ------ LECTURES ------
 //////////////////////////
 
@@ -157,3 +175,50 @@ const currencyUnique = new Set(["USD", "EUR", "GBP", "USD", "EUR"]);
 currencyUnique.forEach(function (value) {
   console.log(`${value}: ${value}`);
 });
+
+// The map() Method
+const eurToUSD = 1.1;
+const movementsUSD = account1.movements.map((mov) => mov * eurToUSD);
+// const movementsUSD = account1.movements.map(function (mov) {
+//   return mov * eurToUSD;
+//   return 23;
+// });
+console.log(account1.movements);
+console.log(movementsUSD);
+
+const evenArray = [2, 4, 6, 8, 10];
+const doubleArray = evenArray.map(function (num) {
+  return num * 2;
+});
+console.log(evenArray);
+console.log(doubleArray);
+
+// The filter() Method
+const deposits = account1.movements.filter(function (mov) {
+  return mov > 0;
+});
+console.log(account1.movements);
+console.log(deposits);
+
+const whitdrawals = account1.movements.filter((mov) => mov < 0);
+console.log(whitdrawals);
+
+// The reduce() Method
+console.log(account1.movements);
+
+// accuulator is like a Snowball
+const balance = account1.movements.reduce(function (acc, cur, i, arr) {
+  console.log(`Iteration ${i}: ${acc}`);
+  return acc + cur;
+}, 0);
+console.log(balance);
+
+const balance2 = account1.movements.reduce((acc, cur) => acc + cur, 100);
+console.log(balance2);
+
+// Maximum value
+const maximumValue = account1.movements.reduce((max, mov) => {
+  if (max > mov) return max;
+  else return mov;
+}, account1.movements[0]);
+console.log(maximumValue);
