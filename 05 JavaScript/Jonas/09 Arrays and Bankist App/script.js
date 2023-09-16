@@ -69,7 +69,7 @@ const displayMovements = function (movements) {
     const html = `
     <div class="movements__row">
       <div class="movements__type movements__type--${type}">${i} ${type}</div>
-      <div class="movements__value">${mov}</div>
+      <div class="movements__value">${mov}€</div>
     </div>
     `;
 
@@ -80,9 +80,30 @@ displayMovements(account1.movements);
 
 const calcDisplayBalance = function (move) {
   const balance = move.reduce((acc, cur) => acc + cur, 0);
-  labelBalance.textContent = `${balance} EUR`;
+  labelBalance.textContent = `${balance} €`;
 };
 calcDisplayBalance(account1.movements);
+
+const calcDisplaySummary = function (move) {
+  const incomes = move
+    .filter((mov) => mov > 0)
+    .reduce((acc, cur) => acc + cur, 0);
+  labelSumIn.textContent = `${incomes}€`;
+
+  const outcomes = move
+    .filter((mov) => mov < 0)
+    .reduce((acc, cur) => acc + cur, 0);
+  labelSumOut.textContent = `${-1 * outcomes}€`;
+  // labelSumOut.textContent = `${Math.abs(outcomes)}€`;
+
+  const interest = move
+    .filter((mov) => mov > 0)
+    .map((mov) => (mov * 1.2) / 100)
+    .filter((mov) => mov >= 1)
+    .reduce((acc, cur) => acc + cur);
+  labelSumInterest.textContent = `${interest}`;
+};
+calcDisplaySummary(account1.movements);
 
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
@@ -222,3 +243,11 @@ const maximumValue = account1.movements.reduce((max, mov) => {
   else return mov;
 }, account1.movements[0]);
 console.log(maximumValue);
+
+// const eurToUSD = 1.1;
+const totalDepositsUSD = account1.movements
+  .filter((mov) => mov > 0)
+  .map((mov) => mov * eurToUSD)
+  .reduce((acc, cur) => acc + cur, 0);
+
+console.log(totalDepositsUSD);
