@@ -60,10 +60,12 @@ const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = "";
 
-  movements.forEach(function (mov, i) {
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? "deposit" : "withdrawal";
 
     const html = `
@@ -206,6 +208,14 @@ btnClose.addEventListener("click", function (e) {
   }
   inputCloseUsername.value = inputClosePin.value = "";
 });
+
+let sorted = false;
+btnSort.addEventListener("click", function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
+});
+
 // ------ LECTURES ------
 //////////////////////////
 
@@ -405,3 +415,29 @@ const overallBalance2 = accounts
   .flatMap((acc) => acc.movements)
   .reduce((acc, cur) => acc + cur, 0);
 console.log(`The total balance for all accounts is: ${overallBalance2}`);
+
+// The sort() Method
+const owners = ["Jonas", "Zach", "Adam", "Mariam"];
+console.log(owners);
+console.log(owners.sort());
+console.log(owners);
+
+const money = [1200, 55, -133, 0, -600, 3000, 70, -20, 400];
+console.log(money);
+console.log(money.sort());
+
+// ascending
+money.sort((a, b) => {
+  if (a > b) return 1;
+  if (b > a) return -1;
+});
+// money.sort((a, b) => a - b);
+console.log(money);
+
+// descending
+money.sort((a, b) => {
+  if (a > b) return -1;
+  if (b > a) return 1;
+});
+// money.sort((a, b) => b - a);
+console.log(money);
