@@ -306,3 +306,44 @@ console.log((2.7).toFixed(0)); // Return: string
 console.log((2.7).toFixed(2));
 console.log((2.7344).toFixed(2));
 console.log(+(2.2344).toFixed(0)); // Return: number
+
+// The Reminding Operator
+console.log(5 % 2);
+console.log(5 / 2); // 5 = 2 * 2 + 1
+console.log(8 % 3);
+console.log(8 / 3); // 8 = 2 * 3 + 2
+
+console.log(6 % 2); // 0 even
+console.log(7 % 2); // 1 odd
+
+const checkNum = (num) => {
+  if (num % 2 === 0) return `${num} -> Even`;
+  else return `${num} -> Odd`;
+};
+
+console.log(checkNum(2));
+console.log(checkNum(3));
+
+const isEven = (n) => n % 2 === 0;
+console.log(isEven(2));
+console.log(isEven(55));
+console.log(isEven(244));
+
+// 287,40,000,000
+const diameter = 287_460_000_000;
+console.log(diameter);
+
+const priceCents = 454_99;
+console.log(priceCents);
+
+const transferFee1 = 15_00;
+const transferFee2 = 1_500;
+
+const PI = 3.1415;
+// const PI = 3._1415; // Error
+// const PI = 3.14__15; // Error
+
+console.log(Number("230000"));
+console.log(Number("230_000")); // NaN
+
+console.log(parseInt("230_000")); // 230
