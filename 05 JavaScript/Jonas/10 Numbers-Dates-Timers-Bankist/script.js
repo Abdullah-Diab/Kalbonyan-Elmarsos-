@@ -347,3 +347,32 @@ console.log(Number("230000"));
 console.log(Number("230_000")); // NaN
 
 console.log(parseInt("230_000")); // 230
+
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+
+console.log(typeof 20n);
+console.log(20n == 20);
+console.log(20n > 10);
+
+// DATES
+console.log(Date.now());
+console.log(new Date());
+
+const now = new Date(2037, 10, 19, 15, 23);
+console.log(now);
+
+// Working with dates
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(future);
+console.log(future.getFullYear());
+console.log(future.getMonth());
+console.log(future.getDate());
+console.log(future.getDay());
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+
+console.log(future.toISOString());
+console.log(future.setFullYear(2040));
+console.log(new Date(2236944180000));
