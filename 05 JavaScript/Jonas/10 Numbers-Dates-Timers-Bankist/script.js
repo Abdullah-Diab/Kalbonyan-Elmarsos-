@@ -146,6 +146,15 @@ const updateUI = function (acc) {
 // ------ Event Handlers ------
 let currentAccount;
 
+const balanceDate = new Date();
+const day = `${balanceDate.getDate()}`.padStart(2, 0);
+const month = `${balanceDate.getMonth() + 1}`.padStart(2, 0);
+const year = balanceDate.getFullYear();
+const hour = balanceDate.getHours();
+const min = balanceDate.getMinutes();
+
+labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
+
 btnLogin.addEventListener("click", function (e) {
   // Prevent form from submitting
   e.preventDefault();
