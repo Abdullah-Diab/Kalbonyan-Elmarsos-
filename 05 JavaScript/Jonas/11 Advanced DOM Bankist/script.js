@@ -1,14 +1,18 @@
 "use strict";
 
+///////////////////////////////////////
+// Bankist App
+
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const btnCloseModal = document.querySelector(".btn--close-modal");
 const btnsOpenModal = document.querySelectorAll(".btn--show-modal");
 const btnScrollTO = document.querySelector(".btn--scroll-to");
 const section1 = document.querySelector("#section--1");
+const navLink = document.querySelectorAll(".nav__link");
+const navLinks = document.querySelector(".nav__links");
 
-///////////////////////////////////////
-// Modal window
+// -- Modal window
 const openModal = function (e) {
   e.preventDefault();
   modal.classList.remove("hidden");
@@ -21,7 +25,6 @@ const closeModal = function () {
 };
 
 btnsOpenModal.forEach((btn) => btn.addEventListener("click", openModal));
-
 btnCloseModal.addEventListener("click", closeModal);
 overlay.addEventListener("click", closeModal);
 
@@ -31,16 +34,43 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-///////////////////////////////////////
-// Button scrolling
+// -- Button scrolling
 btnScrollTO.addEventListener("click", function () {
   section1.scrollIntoView({ behavior: "smooth" });
+});
+
+// -- Page Navigation
+// - This is not a clean solution; that impacts the performance.
+// navLink.forEach(function (el) {
+//   el.addEventListener("click", function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute("href");
+//     document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+//   });
+// });
+
+// - Event Delegation is the best solution.
+// 1. Add event listener to common parent element
+// 2. Determine what element originated the event
+navLinks.addEventListener("click", function (e) {
+  e.preventDefault();
+  if (e.target.classList.contains("nav__link")) {
+    const id = e.target.getAttribute("href");
+    document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+  }
 });
 
 ///////////////////////////////////////
 // Lectures
 
-// Selecting Elements...
+// -- What is the DOM?
+// - Allows us to make JS interact with the browser.
+// - We can write JS to creat, modify and delete HTML elements. And we can set styles, classes and attributes. And listen and respond to events.
+// - DOM tree is generated from an HTML document, which we can then interact with.
+// - Dom is a very complex API that contains lots of methods and properties to interacte with the DOM tree.
+// - In the DOM there are different types of nodes, for example som nodes are HTML elements but others are just text.
+
+// -- Selecting Elements...
 console.log(document.documentElement);
 console.log(document.head);
 console.log(document.body);
@@ -52,23 +82,24 @@ console.log(document.getElementById("section--1"));
 console.log(document.getElementsByTagName("button"));
 console.log(document.getElementsByClassName("btn"));
 
-// Creating and Inserting elements...
-// First Create Element Then Add Class Then Add Content or Add Content with Element and Then Inserting it!
+// Creating and Inserting elements... (STEPS: Create Element, Add Class, Add Content or Add Content with Element, Inserting it)
+// .insertAdjacentHTML()
 const message = document.createElement("div");
 message.classList.add("cookie-message");
 // message.textContent = `We use cookied for improved functionality and analytics.`;
 message.innerHTML = `We use cookied for improved functionality and analytics. <button class="btn btn-close-cookie">Got it!</button>`;
-// document.querySelector(".header").prepend(message);
-// document.querySelector(".header").append(message);
-// document.querySelector(".header").before(message);
-// document.querySelector(".header").after(message);
+const header = document.querySelector(".header");
+// header.prepend(message);
+// header.append(message);
+// header.before(message);
+// header.after(message);
 
-// Deleting Elements...
+// -- Deleting Elements...
 // document
 //   .querySelector(".btn-close-cookie")
 //   .addEventListener("click", () => message.remove());
 
-// Styles...
+// -- Styles...
 message.style.backgroundColor = "#37383d";
 message.style.width = "120%";
 
@@ -83,7 +114,7 @@ message.style.height =
 
 // document.documentElement.style.setProperty("--color-primary", "orangered");
 
-// Attributes...
+// -- Attributes...
 const logo = document.querySelector(".nav__logo");
 console.log(logo.alt);
 console.log(logo.className);
@@ -91,17 +122,55 @@ console.log(logo.className);
 logo.alt = "Beautiful minimalist logo";
 logo.setAttribute("designer", "Jouns");
 console.log(logo.alt);
+
+// Non-standard
 console.log(logo.designer);
 console.log(logo.getAttribute("designer"));
 
 console.log(logo.src);
 console.log(logo.getAttribute("src"));
 
-// Classes
-logo.classList.add("c");
+// -- Classes
+logo.classList.add("c", "j");
 logo.classList.toggle("c");
 logo.classList.remove("c");
 console.log(logo.classList.contains("c"));
 
-// Don't use
+// Don't use: Because this will overeide all the existing classes
 // logo.className = "Diab";
+
+// -- Types of events and events handlers
+// const h1 = document.querySelector("h1");
+// h1.addEventListener("mouseenter", function () {});
+// h1.removeEventListener("mouseenter", function () {});
+// h1.onmouseenter = function () {};
+
+// rgb(255,255,255)
+const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
+const randomColor = () =>
+  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+
+console.log("Random Color:", randomColor());
+
+// -- DOM Traversing
+// - Going downwards: Child
+const h1 = document.querySelector("h1");
+console.log(h1.querySelectorAll(".highlight"));
+console.log(h1.childNodes);
+console.log(h1.children);
+h1.firstElementChild.style.color = "white";
+h1.lastElementChild.style.color = "black";
+// - Going downwards: Parents
+console.log(h1.parentNode);
+console.log(h1.parentElement);
+h1.closest(".header").style.background = "var(--gradient-secondary)";
+// - Going sideways: Siblings
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling);
+
+// FOR FUN :)
+console.log(h1.parentElement.children);
+[...h1.parentElement.children].forEach(function (el) {
+  if (el !== h1) el.style.textTransform = "capitalize";
+});
