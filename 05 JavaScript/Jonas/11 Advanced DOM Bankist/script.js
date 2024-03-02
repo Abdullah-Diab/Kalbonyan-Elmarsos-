@@ -1,7 +1,7 @@
 "use strict";
 
-///////////////////////////////////////
 // Bankist App
+// --------------------------------
 
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
@@ -9,6 +9,7 @@ const btnCloseModal = document.querySelector(".btn--close-modal");
 const btnsOpenModal = document.querySelectorAll(".btn--show-modal");
 const btnScrollTO = document.querySelector(".btn--scroll-to");
 const section1 = document.querySelector("#section--1");
+const nav = document.querySelector(".nav");
 const navLink = document.querySelectorAll(".nav__link");
 const navLinks = document.querySelector(".nav__links");
 
@@ -60,8 +61,112 @@ navLinks.addEventListener("click", function (e) {
   }
 });
 
-///////////////////////////////////////
+// -- Tabbed component
+const tabs = document.querySelectorAll(".operations__tab");
+const tabsContainer = document.querySelector(".operations__tab-container");
+const tabsContent = document.querySelectorAll(".operations__content");
+
+tabsContainer.addEventListener("click", function (e) {
+  const clicked = e.target.closest(".operations__tab");
+
+  // Guard clause
+  if (!clicked) return;
+
+  // Remove active classes
+  tabs.forEach((tab) => tab.classList.remove("operations__tab--active"));
+  tabsContent.forEach((c) => c.classList.remove("operations__content--active"));
+
+  // Active Tab
+  clicked.classList.add("operations__tab--active");
+  // Activate content area
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add("operations__content--active");
+});
+
+// -- Menu fade animation
+const handleHover = function (e, opacity) {
+  if (e.target.classList.contains("nav__link")) {
+    const link = e.target;
+    const siblings = link.closest(".nav").querySelectorAll(".nav__link");
+    const logo = link.closest(".nav").querySelector("img");
+
+    siblings.forEach((el) => {
+      if (el !== link) el.style.opacity = this;
+    });
+
+    logo.style.opacity = this;
+  }
+};
+
+nav.addEventListener("mouseover", handleHover.bind(0.6));
+nav.addEventListener("mouseout", handleHover.bind(1));
+
+// Sticky navigation
+// const initialCoords = section1.getBoundingClientRect();
+// window.addEventListener("scroll", function () {
+//   if (window.scrollY > initialCoords.top) nav.classList.add("sticky");
+//   else nav.classList.remove("sticky");
+// });
+
+// Sticky navigation: The Intersection Observer API
+const header = document.querySelector(".header");
+const navHeight = nav.getBoundingClientRect().height;
+const stickyNav = function (entries) {
+  const [entry] = entries;
+  if (!entry.isIntersecting) nav.classList.add("sticky");
+  else nav.classList.remove("sticky");
+};
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight}px`,
+});
+headerObserver.observe(header);
+
+// Reveal Section
+const allSection = document.querySelectorAll(".section");
+
+const revealSection = function (entries, observer) {
+  const [entry] = entries;
+  if (!entry.isIntersecting) return;
+
+  entry.target.classList.remove("section--hidden");
+  observer.unobserve(entry.target);
+};
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.15,
+});
+allSection.forEach(function (section) {
+  sectionObserver.observe(section);
+  section.classList.add("section--hidden");
+});
+
+// Lazy Loading Images
+const imgTargets = document.querySelectorAll("img[data-src]");
+const loadImg = function (entries, observer) {
+  const [entry] = entries;
+  if (!entry.isIntersecting) return;
+
+  entry.target.src = entry.target.dataset.src;
+  entry.target.addEventListener("load", function () {
+    entry.target.classList.remove("lazy-img");
+  });
+
+  observer.unobserve(entry.target);
+};
+const imgObserver = new IntersectionObserver(loadImg, {
+  root: null,
+  threshold: 0,
+  rootMargin: `200px`,
+});
+imgTargets.forEach((img) => imgObserver.observe(img));
+
 // Lectures
+// --------------------------------
 
 // -- What is the DOM?
 // - Allows us to make JS interact with the browser.
@@ -88,7 +193,7 @@ const message = document.createElement("div");
 message.classList.add("cookie-message");
 // message.textContent = `We use cookied for improved functionality and analytics.`;
 message.innerHTML = `We use cookied for improved functionality and analytics. <button class="btn btn-close-cookie">Got it!</button>`;
-const header = document.querySelector(".header");
+// const header = document.querySelector(".header");
 // header.prepend(message);
 // header.append(message);
 // header.before(message);
@@ -161,10 +266,10 @@ console.log(h1.childNodes);
 console.log(h1.children);
 h1.firstElementChild.style.color = "white";
 h1.lastElementChild.style.color = "black";
-// - Going downwards: Parents
+// - Going upwards: Parents
 console.log(h1.parentNode);
 console.log(h1.parentElement);
-h1.closest(".header").style.background = "var(--gradient-secondary)";
+// h1.closest(".header").style.background = "var(--gradient-secondary)";
 // - Going sideways: Siblings
 console.log(h1.previousElementSibling);
 console.log(h1.nextElementSibling);
@@ -172,5 +277,20 @@ console.log(h1.nextElementSibling);
 // FOR FUN :)
 console.log(h1.parentElement.children);
 [...h1.parentElement.children].forEach(function (el) {
-  if (el !== h1) el.style.textTransform = "capitalize";
+  // if (el !== h1) el.style.textTransform = "capitalize";
 });
+
+//  The Intersection Observer API
+const obsCallback = function (entries, observer) {
+  entries.forEach((entry) => {
+    // console.log(entry);
+  });
+};
+
+const obsOptions = {
+  root: null,
+  threshold: [0, 0.2],
+};
+
+const observer = new IntersectionObserver(obsCallback, obsOptions);
+observer.observe(section1);

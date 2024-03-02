@@ -35,7 +35,7 @@ body {
 
 /* GENERAL ELEMENTS */
 .section {
-  padding: 12rem 3rem;
+  padding: 14rem 3rem;
   border-top: 1px solid #ddd;
 
   transition: transform 1s, opacity 1s;
@@ -157,6 +157,9 @@ img {
 
 .nav__link--btn:link,
 .nav__link--btn:visited {
+  font-size: 1.4rem;
+  font-weight: bold;
+
   padding: 0.8rem 2.5rem;
   border-radius: 3rem;
   background-color: var(--color-primary);
